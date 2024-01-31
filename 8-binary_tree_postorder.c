@@ -1,0 +1,25 @@
+#include "binary_trees.h"
+/**
+ * binary_tree_postorder - reads all data in a binary tree recursively
+ * using postorder traversal.
+ *
+ * @tree: pointer to the root node of the binary tree
+ * @func: pointer to the printing function
+ *
+ * Return: nothing!
+ */
+void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
+{
+	/* base case */
+	if (tree == NULL)
+		return;
+
+	/* navigate to left nodes */
+	binary_tree_postorder(tree->left, func);
+
+	/* navigate to right nodes */
+	binary_tree_postorder(tree->right, func);
+
+	/* print data */
+	func(tree->n);
+}
